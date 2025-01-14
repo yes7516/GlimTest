@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int solution(int a, int b, int c, int d) {
+    int answer = 0;
+    int num_list[] = { a, b, c, d };
+
+    sort(num_list, num_list + 4);
+
+    int q = num_list[0];
+    int w = num_list[1];
+    int e = num_list[2];
+    int r = num_list[3];
+
+    cout << q << w << e <<r << endl;
+
+    if (q == w && w == e && e == r)
+        answer = 1111 * q;
+    else if (q == w && w == e && e != r)
+        answer = (10 * q + r) * (10 * q + r);
+    else if (q != w && w == e && e == r)
+        answer = (10 * r + q) * (10 * r + q);
+    else if (q == w && w != e && e == r)
+        answer = (q + r) * abs(q - r);
+    else if (q == w && w != e && e != r)
+        answer = e * r;
+    else if (q != w && w == e && e != r)
+        answer = q * r;
+    else if (q != w && w != e && e == r)
+        answer = q * w;
+    else if (q != w && w != e && e != r)
+        answer = q;
+    return answer;
+}
